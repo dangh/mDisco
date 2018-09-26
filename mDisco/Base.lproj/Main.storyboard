@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.23.1" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.16.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="iosevka-regular.ttf">
+            <string>Iosevka</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="mDisco" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="qaM-XK-Imv">
+                                <rect key="frame" x="0.0" y="20" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="Iosevka" family="Iosevka" pointSize="15"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bI7-Bc-4Nd">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="4JZ-Sr-Y5W"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Iosevka" family="Iosevka" pointSize="20"/>
+                                <state key="normal" title="RESTART">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="restart:" destination="BYZ-38-t0r" eventType="touchDown" id="Bap-Ou-kxs"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="qaM-XK-Imv" firstAttribute="leading" secondItem="bI7-Bc-4Nd" secondAttribute="leading" id="2Yy-fN-GpR"/>
+                            <constraint firstAttribute="trailing" secondItem="qaM-XK-Imv" secondAttribute="trailing" id="2pl-m9-SbF"/>
+                            <constraint firstItem="qaM-XK-Imv" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Dbd-tc-dKd"/>
+                            <constraint firstItem="bI7-Bc-4Nd" firstAttribute="top" secondItem="qaM-XK-Imv" secondAttribute="bottom" id="GzZ-8J-mgl"/>
+                            <constraint firstItem="qaM-XK-Imv" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Uka-b1-JKP"/>
+                            <constraint firstItem="bI7-Bc-4Nd" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="hwZ-1H-DMQ"/>
+                            <constraint firstItem="qaM-XK-Imv" firstAttribute="trailing" secondItem="bI7-Bc-4Nd" secondAttribute="trailing" id="kvc-Jf-wez"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="textView" destination="qaM-XK-Imv" id="Rxy-QT-fZ9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="132.68365817091455"/>
+        </scene>
+    </scenes>
+</document>
