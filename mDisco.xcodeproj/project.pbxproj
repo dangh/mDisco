@@ -11,7 +11,7 @@
 		348867DC215B3A7B00BE7581 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348867DB215B3A7B00BE7581 /* ViewController.swift */; };
 		348867DF215B3A7B00BE7581 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 348867DD215B3A7B00BE7581 /* Main.storyboard */; };
 		348867E4215B3A7D00BE7581 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 348867E2215B3A7D00BE7581 /* LaunchScreen.storyboard */; };
-		3488BB6021666AAD00A2093E /* iosevka-regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3488BB5F21666AAD00A2093E /* iosevka-regular.ttf */; };
+		3488BB642166F30400A2093E /* Input-Regular_(InputSansCompressed-Regular).ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3488BB632166F30400A2093E /* Input-Regular_(InputSansCompressed-Regular).ttf */; };
 		3497BC3D2165FC20005DF272 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3497BC3C2165FC20005DF272 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
@@ -22,7 +22,7 @@
 		348867DE215B3A7B00BE7581 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		348867E3215B3A7D00BE7581 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		348867E5215B3A7D00BE7581 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3488BB5F21666AAD00A2093E /* iosevka-regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "iosevka-regular.ttf"; sourceTree = "<group>"; };
+		3488BB632166F30400A2093E /* Input-Regular_(InputSansCompressed-Regular).ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Input-Regular_(InputSansCompressed-Regular).ttf"; sourceTree = "<group>"; };
 		3497BC3C2165FC20005DF272 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -70,7 +70,7 @@
 		3497BC372165F6E7005DF272 /* fonts */ = {
 			isa = PBXGroup;
 			children = (
-				3488BB5F21666AAD00A2093E /* iosevka-regular.ttf */,
+				3488BB632166F30400A2093E /* Input-Regular_(InputSansCompressed-Regular).ttf */,
 			);
 			path = fonts;
 			sourceTree = "<group>";
@@ -136,7 +136,7 @@
 				348867E4215B3A7D00BE7581 /* LaunchScreen.storyboard in Resources */,
 				3497BC3D2165FC20005DF272 /* Assets.xcassets in Resources */,
 				348867DF215B3A7B00BE7581 /* Main.storyboard in Resources */,
-				3488BB6021666AAD00A2093E /* iosevka-regular.ttf in Resources */,
+				3488BB642166F30400A2093E /* Input-Regular_(InputSansCompressed-Regular).ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
