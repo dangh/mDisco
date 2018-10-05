@@ -99,7 +99,7 @@ class BonjourDiscoverer: NSObject, NetServiceBrowserDelegate, NetServiceDelegate
         print("Found \"\(service.name)\" at \"\(service.type)\(service.domain)\"")
         service.delegate = self
         service.startMonitoring()
-        service.resolve(withTimeout: 1)
+        service.resolve(withTimeout: 3.0)
         services.insert(service) // keep service from autoreleasing
     }
 
