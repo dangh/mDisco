@@ -79,6 +79,40 @@ extension Data {
     func toString(encoding: String.Encoding = .utf8) -> String {
         return String(data: self, encoding: encoding)!
     }
+
+    /// Decode the TXT record as a string dictionary, or [:] if the data is malformed
+    func toDictionary() -> [String: String] {
+
+        var result = [String: String]()
+        var data = self
+
+        while !data.isEmpty {
+            // The first byte of each record is its length, so prefix that much data
+            let recordLength = Int(data.removeFirst())
+            guard data.count >= recordLength else { return [:] }
+            let recordData = data[..<(data.startIndex + recordLength)]
+            data = data.dropFirst(recordLength)
+
+            guard let record = String(bytes: recordData, encoding: .utf8) else { return [:] }
+            // The format of the entry is "key=value"
+            // (According to the reference implementation, = is optional if there is no value,
+            // and any equals signs after the first are part of the value.)
+            // `ommittingEmptySubsequences` is necessary otherwise an empty string will crash the next line
+            let keyValue = record.split(separator: "=", maxSplits: 1, omittingEmptySubsequences: false)
+            let key = String(keyValue[0])
+            // If there's no value, make the value the empty string
+            switch keyValue.count {
+            case 1:
+                result[key] = ""
+            case 2:
+                result[key] = String(keyValue[1])
+            default:
+                fatalError()
+            }
+        }
+
+        return result
+    }
 }
 
 class BonjourDiscoverer: NSObject, NetServiceBrowserDelegate, NetServiceDelegate {
@@ -96,7 +130,7 @@ class BonjourDiscoverer: NSObject, NetServiceBrowserDelegate, NetServiceDelegate
     }
 
     func netServiceBrowser(_ browser: NetServiceBrowser, didFind service: NetService, moreComing: Bool) {
-        print("Found \"\(service.name)\" at \"\(service.type)\(service.domain)\"")
+        print("{\(service.name)} found at \"\(service.type)\(service.domain)\"")
         service.delegate = self
         service.startMonitoring()
         service.resolve(withTimeout: 3.0)
@@ -104,22 +138,23 @@ class BonjourDiscoverer: NSObject, NetServiceBrowserDelegate, NetServiceDelegate
     }
 
     func netServiceDidResolveAddress(_ sender: NetService) {
-        print("Resolved \"\(sender.hostName!)\" on port \(sender.port)")
+        print("{\(sender.name)} resolved at \"\(sender.hostName!)\" on port \(sender.port)")
         if let ipv4 = self.resolveIPv4(addresses: sender.addresses!) {
-            print("IP: \(ipv4)")
+            print("{\(sender.name)} IP: \(ipv4):\(sender.port)")
+        }
+        let txt = sender.txtRecordData()
+        if (txt != nil) {
+            print("{\(sender.name)} TXT: \(txt?.toDictionary() as AnyObject)")
         }
     }
 
     func netService(_ sender: NetService, didNotResolve errorDict: [String : NSNumber]) {
-        print("Resolve failed: \(errorDict)")
+        print("{\(sender.name)} resolve failed: \(errorDict)")
         services.remove(sender)
     }
 
     func netService(_ sender: NetService, didUpdateTXTRecord data: Data) {
-        let txtDict = NetService.dictionary(fromTXTRecord: data)
-        if let helloObj = txtDict["hello"] {
-            print("TXT updated: \(helloObj.toString())")
-        }
+        print("{\(sender.name)} TXT updated: \(data.toDictionary() as AnyObject)")
     }
 
     // Find an IPv4 addresses from the service address data
